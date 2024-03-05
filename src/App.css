@@ -12,3 +12,6 @@
   height: calc(100vh - 110px);
   overflow: hidden;
 }
+.customSignupHeight {
+  min-height: calc(100vh - 110px);
+}
