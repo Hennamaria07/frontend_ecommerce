@@ -1,7 +1,7 @@
 import './App.css'
 import { Header, Footer, Login, Error, SignUp } from './components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Hero } from './pages'
+import { Faq, Hero } from './pages'
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
      <Header />
      <Routes>
       <Route path='/' element={<Hero />}/>
+      <Route path='/faq' element={<Faq />}/>
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='*' element={<Error />} />
