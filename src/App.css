@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
-.react-multi-carousel-dot {
-  color: #043E44;
+.react-multi-carousel-dot-list {
+  padding-bottom: 1rem !important;
+}
+
+.customHeight {
+  height: calc(100vh - 110px);
+  overflow: hidden;
 }

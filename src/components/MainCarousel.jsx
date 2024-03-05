@@ -28,15 +28,20 @@ const MainCarousel = () => {
     return (
         <>
             <Carousel 
+            className='customHeight'
             responsive={responsive}
             showDots={true}
             autoPlay={true}
             infinite={true}
             >
-                <div>Item 1</div>
-                <div>Item 2</div>
-                <div>Item 3</div>
-                <div>Item 4</div>
+                <div className='customCarouselHeight'>
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D" className='w-full h-full' alt="product image" />
+                </div>
+                <div className='customCarouselHeight'>
+                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D" className='w-full h-full' alt="" />
+                </div>
+                <div className='customCarouselHeight'>Item 3</div>
+                <div className='customCarouselHeight'>Item 4</div>
             </Carousel>
         </>
     )

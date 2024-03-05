@@ -13,7 +13,7 @@ const customTheme = {
 const Header = () => {
   return (
     <>
-    <header>
+    <header className='max-h-[110px] overflow-hidden'>
       <nav>
         <div className='bg-[#043E44] h-14 flex justify-evenly items-center px-5 text-white'>
        <div className='me-auto' >

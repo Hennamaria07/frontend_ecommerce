@@ -1,6 +1,5 @@
-import { Button } from 'flowbite-react'
 import './App.css'
-import { Header } from './components'
+import { Header, Footer, Login, Error } from './components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Hero } from './pages'
 
@@ -12,7 +11,10 @@ function App() {
      <Header />
      <Routes>
       <Route path='/' element={<Hero />}/>
+      <Route path='/login' element={<Login />} />
+      <Route path='*' element={<Error />} />
      </Routes>
+     <Footer />
      </BrowserRouter>
     </>
   )
