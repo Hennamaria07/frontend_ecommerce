@@ -1,6 +1,6 @@
 import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react'
 import React from 'react';
-
+import userPhoto from '../assets/images/user.png'
 const customTheme = {
   color: {
     dark: "bg-gray-900 text-white dark:bg-gray-700",
@@ -55,7 +55,7 @@ garden_cart
           arrowIcon={false}
           inline
           label={
-            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+            <Avatar alt="User settings" img={userPhoto} rounded />
           }
         >
           <Dropdown.Header>

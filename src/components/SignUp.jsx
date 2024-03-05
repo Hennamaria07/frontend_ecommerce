@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import login from '../assets/images/login.png'
 import { Button } from 'flowbite-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import userPhoto from '../assets/images/user.png';
+
 const SignUp = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
@@ -57,7 +59,7 @@ const SignUp = () => {
 
       <div className="text-center">
         <div className="mt-2" style={{ display: photoPreview ? 'none' : 'block' }}>
-          <img src="https://www.fiaregion1.com/wp-content/uploads/2021/02/avatar-vector-male-profile-gray.jpg" className="w-40 h-40 m-auto rounded-full shadow" alt="Current Profile" />
+          <img src={userPhoto} className="w-40 h-40 m-auto rounded-full shadow" alt="Current Profile" />
         </div>
 
         {photoPreview && (
