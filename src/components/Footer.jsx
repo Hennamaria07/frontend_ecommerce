@@ -4,7 +4,7 @@ const Footer = () => {
         <>
             <footer className="bg-[#043E44] dark:bg-gray-900">
                 <div className=" w-full border-none">
-                    <div className="grid grid-cols-2 gap-8 md:px-32 py-6 lg:py-8 md:grid-cols-4">
+                    <div className="grid sm:grid-cols-2 gap-8 md:px-32 px-16 sm:px-20 py-6 lg:py-8 md:grid-cols-4">
                         <div>
                             <h2 className="mb-6 text-xl font-bold text-slate-200">Exclusive</h2>
                             <h2 className="mb-6  font-semibold text-slate-200">Subscribe</h2>
@@ -31,7 +31,7 @@ const Footer = () => {
                                     <a href="#" className="hover:underline text-slate-300">111 Bijoy sarani, Dhaka,  DH 1515, Bangladesh.</a>
                                 </li>
                                 <li className="mb-4">
-                                    <a href="#" className="hover:underline text-slate-300">exclusive@gmail.com</a>
+                                    <a href="#" className="hover:underline text-slate-300">support@gmail.com</a>
                                 </li>
                                 <li className="mb-4">
                                     <a href="#" className="hover:underline text-slate-300">+91-9876054321</a>
