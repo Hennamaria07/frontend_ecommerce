@@ -1,4 +1,5 @@
 import Hero from "./Hero";
 import Faq from "./Faq";
+import Dashboard from "./Dashboard";
 
-export {Hero, Faq}
+export {Hero, Faq, Dashboard}

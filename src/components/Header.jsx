@@ -36,7 +36,7 @@ const Header = () => {
   }
   return (
     <>
-      <header>
+      <header className='fixed w-full z-50 '>
         <nav>
           <div className='bg-[#043E44] h-14 grid grid-cols-3 place-items-center px-5 text-white'>
             <div className='me-auto' >
@@ -69,11 +69,15 @@ const Header = () => {
           </div>
           <Navbar fluid className='bg-[#8CB9BD] dark:bg-[#8CB9BD]'>
             <Dropdown color='light' label="All Categories">
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Earnings</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>Separated link</Dropdown.Item>
+              <Dropdown.Item>Cloth</Dropdown.Item>
+              <Dropdown.Item>Computer</Dropdown.Item>
+              <Dropdown.Item>Moblie</Dropdown.Item>
+              {user && user.role === "admin" ? (
+                <>
+                  <Dropdown.Divider />
+                  <Link to={'/dashboard'} className='text-center ms-auto px-5 py-1.5 text-sm'>Dashboard</Link>
+                </>
+              ) : ""}
             </Dropdown>
 
             <div className="flex md:order-2">
@@ -85,11 +89,11 @@ const Header = () => {
                   garden_cart
                 </span>
               </div>
-              {isAuthenticated? (<Dropdown
+              {isAuthenticated ? (<Dropdown
                 arrowIcon={false}
                 inline
                 label={
-                  <Avatar alt="User settings" img={ user.image.avatar} rounded />
+                  <Avatar alt="User settings" img={user.image.avatar} rounded />
                 }
               >
                 <Dropdown.Header>
@@ -103,7 +107,7 @@ const Header = () => {
                 <Dropdown.Item>Sign out</Dropdown.Item>
               </Dropdown>) : (<Link to={'/login'}><p className='text-gray-900 font-semibold cursor-pointer'>
                 Sign in
-              </p></Link>) }
+              </p></Link>)}
               <Navbar.Toggle />
             </div>
             <Navbar.Collapse>

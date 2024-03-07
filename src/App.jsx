@@ -1,7 +1,7 @@
 import './App.css'
 import { Header, Footer, Login, Error, SignUp } from './components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Faq, Hero } from './pages'
+import { Dashboard, Faq, Hero } from './pages'
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
       <Route path='/faq' element={<Faq />}/>
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />} />
+      <Route path='/dashboard' element={<Dashboard />} /> 
       <Route path='*' element={<Error />} />
      </Routes>
      <Footer />

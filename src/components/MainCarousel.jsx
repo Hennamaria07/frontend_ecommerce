@@ -5,7 +5,7 @@ import React from 'react'
 const MainCarousel = () => {
     return (
         <>
-           <div className="customHeight">
+           <div className="customHeight overflow-hidden">
       <Carousel slide={false} leftControl=" " className='rounded-none' rightControl=" ">
         <div className='carousel-bg w-full h-full p-5'>
           <div className='md:w-[50%] text-center h-full flex items-center'>
