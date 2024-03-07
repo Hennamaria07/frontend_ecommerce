@@ -1,69 +1,104 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import login from '../assets/images/login.png'
-import { Button } from 'flowbite-react'
-import { Link } from 'react-router-dom';
+// import { Button } from 'flowbite-react'
+import { Link, useNavigate } from 'react-router-dom';
 import userPhoto from '../assets/images/user.png';
+import instance from '../utils/axios';
+import { Flip, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
     const [photoName, setPhotoName] = useState(null);
     const [photoPreview, setPhotoPreview] = useState(null);
+    const navigate = useNavigate();
     const [formValues, setFormValues] = useState(
         {
             name: '',
             email: '',
             number: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            profile: ''
         }
     );
     const [errors, setErrors] = useState({})
 
 
     const validation = (values) => {
-        const errors = {}; 
+        const errors = {};
         const nameRE = /^[a-zA-Z]{5,}(\s[a-zA-Z]+)*$/;
         const emailRe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         const numberRe = /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[6789]\d{9}$/;
         const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-       
-        if(values.name === "") {
+        if (values.profile === "") {
+            errors.photo = "photo is required";
+        }
+        if (values.name === "") {
             errors.name = "Name is required";
-        } else if(!nameRE.test(values.name)) {
+        } else if (!nameRE.test(values.name)) {
             errors.name = "Invalid name";
         }
-        if(values.email === "") {
+        if (values.email === "") {
             errors.email = "Email is required";
-        } else if(!emailRe.test(values.email)){
+        } else if (!emailRe.test(values.email)) {
             errors.email = "Invalid email";
         }
-        if(values.number === "") {
+        if (values.number === "") {
             errors.number = "Number is required";
-        } else if(!numberRe.test(values.number)){
+        } else if (!numberRe.test(values.number)) {
             errors.number = "Invalid number";
         }
-        if(values.password === "") {
+        if (values.password === "") {
             errors.password = "Password is required";
-        } else if(!passwordRe.test(values.password)){
-            errors.password = "Invalid password";
+        } else if (!passwordRe.test(values.password)) {
+            errors.password = "Password must be at least 8 characters and include at least one lowercase letter, one uppercase letter, one digit, and one special character";
         }
-        if(values.password !== values.confirmPassword) {
-            errors.confirmPassword = "Passwords do not match";
+        if (values.password !== values.confirmPassword) {
+            errors.confirmPassword = "Password do not match";
         }
         return errors;
     }
     const handleInput = (e) => {
-        console.log("Field: ", e.target.name, " Value: ", e.target.value);
-        console.log(formValues);
-        setFormValues({...formValues, [e.target.name]: e.target.value})
+        // console.log("Field: ", e.target.name, " Value: ", e.target.value);
+        // console.log(formValues);
+        setFormValues({ ...formValues, [e.target.name]: e.target.value })
+        console.log(formValues.confirmPassword);
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('form is submitted');
-        console.log(validation(formValues))
+        // console.log('form is submitted');
+        // console.log(validation(formValues))
         const validationErrors = validation(formValues);
         setErrors(validationErrors);
+        if (Object.keys(validationErrors).length === 0) { // Check if there are no validation errors
+            const formData = new FormData();
+            formData.append('fullName', formValues.name);
+            formData.append('email', formValues.email);
+            formData.append('phone', formValues.number);
+            formData.append('password', formValues.password);
+            formData.append('confirmPassword', formValues.confirmPassword);
+            if (formValues.profile) {
+                formData.append('avatar', formValues.profile);
+            }
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+            try {
+                const res = await instance.post('/api/v1/user/signup', formData, { headers: { 'Content-type': 'multipart/form-data' } })
+                if (res.data.success) {
+                    toast.success(res.data.message);
+                    await new Promise((resolve) => setTimeout(resolve, 1000))
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 1000);
+                }
+            } catch (error) {
+                toast.error(error.response.data.message)
+            }
+        }
+
     }
     // Password
     function togglePasswordVisibility() {
@@ -75,16 +110,26 @@ const SignUp = () => {
 
     // avatar
     const handlePhotoChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
+        console.log("File input changed");
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
+            console.log("Selected file:", file);
+            setFormValues({ ...formValues, profile: file })
             setPhotoName(file.name);
+            setFormValues((prevValues) => ({
+                ...prevValues,
+                profile: file, // This updates the profile field with the selected photo file
+            }));
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPhotoPreview(reader.result);
             };
             reader.readAsDataURL(file);
+        } else {
+            console.log("No file selected");
         }
     };
+
     return (
         <>
             <section className='customSignupHeight grid md:grid-cols-2 sm:px-0 px-5'>
@@ -97,6 +142,19 @@ const SignUp = () => {
                         <p className='text-sm' >Enter your details below</p>
                     </div>
                     <form action="" onSubmit={handleSubmit} className='grid gap-5 mx-auto w-[250px] sm:w-[300px] lg:w-[400px]'>
+                    <ToastContainer 
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Flip}
+                />
                         <div className="py-3 center mx-auto">
                             <div className="text-center w-48">
                                 <input
@@ -125,6 +183,7 @@ const SignUp = () => {
                                     <label htmlFor="photo" className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3 cursor-pointer">
                                         Select New Photo
                                     </label>
+                                    {errors.photo && <p className='text-red-600'>{errors.photo}</p>}
                                 </div>
                             </div>
                         </div>
@@ -173,7 +232,7 @@ const SignUp = () => {
 
                         </div>
                         <div className="relative grid grid-cols-1 z-0 w-full">
-                           <button>Sign up</button>
+                            <button className='bg-[#043E44] text-slate-200 p-2 rounded-md'>Sign up</button>
                         </div>
                         <div className="relative z-0 w-full text-right">
                             <p>Already have account?<Link className='ps-2'>Login</Link></p>
