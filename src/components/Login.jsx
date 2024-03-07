@@ -83,7 +83,7 @@ const handleSubmit = async (e) => {
         </div>
         <div className='my-auto'>
           <div className='text-center pb-5'>
-            <h2 className='text-4xl font-medium'>Log in to Exclusive</h2>
+            <h2 className='text-4xl font-medium'>Sign in to Exclusive</h2>
             <p className='text-sm' >Enter your details below</p>
           </div>
           <form action="" noValidate onSubmit={handleSubmit} className='grid gap-6 mx-auto w-[250px] sm:w-[300px] lg:w-[400px]'>
@@ -112,14 +112,14 @@ const handleSubmit = async (e) => {
             </div>
             <div className="relative grid gap-10 grid-cols-2 z-0 w-full">
               <button className='bg-[#043E44] p-2 text-slate-200 rounded-md'>
-                Log In
+                Sign In
               </button>
               <div className='bg-transparent p-2 cursor-pointer text-[#043E44] rounded-md'>
               Forget Password?
               </div>
             </div>
             <div className="relative z-0 w-full text-right">
-              <p>Don't have account?<Link className='ps-2'>Sign up</Link></p>
+              <p>Don't have account?<Link className='ps-2' to={'/signup'}>Sign up</Link></p>
             </div>
           </form>
         </div>

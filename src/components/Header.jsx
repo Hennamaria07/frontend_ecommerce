@@ -1,6 +1,7 @@
 import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react'
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const customTheme = {
   color: {
@@ -84,11 +85,11 @@ const Header = () => {
                   garden_cart
                 </span>
               </div>
-              <Dropdown
+              {isAuthenticated? (<Dropdown
                 arrowIcon={false}
                 inline
                 label={
-                  <Avatar alt="User settings" img={ isAuthenticated ? user.image.avatar: "https://flowbite.com/docs/images/people/profile-picture-5.jpg"} rounded />
+                  <Avatar alt="User settings" img={ user.image.avatar} rounded />
                 }
               >
                 <Dropdown.Header>
@@ -100,18 +101,20 @@ const Header = () => {
                 <Dropdown.Item>Earnings</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item>Sign out</Dropdown.Item>
-              </Dropdown>
+              </Dropdown>) : (<Link to={'/login'}><p className='text-gray-900 font-semibold cursor-pointer'>
+                Sign in
+              </p></Link>) }
               <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-              <Navbar.Link href="#" className='text-gray-900 dark:text-gary-900'>
+              <Link to={'/'} className='text-gray-900 dark:text-gary-900'>
                 Home
-              </Navbar.Link>
-              <Navbar.Link href="#" className='text-gray-900 dark:text-gary-900'>Best Seller</Navbar.Link>
-              <Navbar.Link href="#" className='text-gray-900 dark:text-gary-900'>Products</Navbar.Link>
-              <Navbar.Link href="#" className='text-gray-900 dark:text-gary-900'>Sales</Navbar.Link>
-              <Navbar.Link href="#" className='text-gray-900 dark:text-gary-900'>FAQ</Navbar.Link>
-              <Navbar.Link href="#" className='text-gray-900 md:hidden block'>Become a seller</Navbar.Link>
+              </Link>
+              <Link to={''} className='text-gray-900 dark:text-gary-900'>Best Seller</Link>
+              <Link to={'/products'} className='text-gray-900 dark:text-gary-900'>Products</Link>
+              <Link to={'/sales'} className='text-gray-900 dark:text-gary-900'>Sales</Link>
+              <Link to={'/faq'} className='text-gray-900 dark:text-gary-900'>FAQ</Link>
+              <Link to={'/seller/request'} className='text-gray-900 md:hidden block'>Become a seller</Link>
             </Navbar.Collapse>
           </Navbar>
 

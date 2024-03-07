@@ -3,7 +3,9 @@
   padding: 0%;
   box-sizing: border-box;
 }
-
+/* * ::before, ::after {
+  border: none !important;
+} */
 .react-multi-carousel-dot-list {
   padding-bottom: 1rem !important;
 }
