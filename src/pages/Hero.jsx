@@ -1,11 +1,13 @@
 import React from 'react'
-import { MainCarousel } from '../components'
+import { BestDeals, MainCarousel, TodaysDeal } from '../components'
 
 const Hero = () => {
   return (
     <>
-    <section className=' dark:bg-[#121212ed]'>
+    <section className='dark:bg-[#121212ed]'>
     <MainCarousel />
+    {/* <BestDeals /> */}
+    <TodaysDeal />
     </section>
     </>
   )

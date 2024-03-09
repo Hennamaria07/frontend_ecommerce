@@ -77,7 +77,7 @@ const handleSubmit = async (e) => {
 }
   return (
     <>
-      <section className='customHeight grid md:grid-cols-2 sm:px-0 px-5'>
+      <section className='pt-[117.6px] max-h-[100vh] overflow-hidden grid md:grid-cols-2 sm:px-0 px-5'>
         <div className='h-full w-full hidden md:flex justify-center items-center bg-[#8CB9BD]'>
           <img src={login} className='w-[98%] h-[80%]' alt="" />
         </div>

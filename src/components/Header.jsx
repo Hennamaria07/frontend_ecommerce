@@ -1,7 +1,8 @@
 import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react'
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getTheme } from '../redux/features/themeSlice';
 
 const customTheme = {
   color: {
@@ -13,6 +14,7 @@ const customTheme = {
 
 
 const Header = () => {
+  const dispatch = useDispatch()
   const user = useSelector(state => state.auth.user)
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   const [theme, setTheme] = useState('light');
@@ -29,10 +31,13 @@ const Header = () => {
     } else {
       document.documentElement.classList.remove("dark")
     }
+    
   }, [theme])
   // console.log(user)
   const handleThemeToggle = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+    const newTheme = theme === "dark" ? "light" : "dark"
+    setTheme(newTheme)
+    dispatch(getTheme({theme: newTheme}));
   }
   return (
     <>
@@ -53,7 +58,9 @@ const Header = () => {
               </div>
             </div>
             <div className='flex md:gap-2'>
-              <button type="button" className="text-gray-900  rounded-md hidden md:flex bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 font-medium text-sm px-5 py-2.5 ">Become a seller</button>
+              <Link to={'/seller/request'}>
+              <button type="button" className="text-gray-900 rounded-md hidden lg:flex bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 font-medium text-sm px-5 py-2.5 ">Become a seller</button>
+              </Link>
               <div onClick={handleThemeToggle} className="absolute right-0 top-0 mt-3 mr-4 cursor-pointer">
                 {theme === "light" ? (
                   <span className="material-symbols-outlined">
@@ -114,11 +121,11 @@ const Header = () => {
               <Link to={'/'} className='text-gray-900 dark:text-gary-900'>
                 Home
               </Link>
-              <Link to={''} className='text-gray-900 dark:text-gary-900'>Best Seller</Link>
+              <Link to={'/trending'} className='text-gray-900 dark:text-gary-900'>Best Seller</Link>
               <Link to={'/products'} className='text-gray-900 dark:text-gary-900'>Products</Link>
-              <Link to={'/sales'} className='text-gray-900 dark:text-gary-900'>Sales</Link>
+              {/* <Link to={'/sales'} className='text-gray-900 dark:text-gary-900'>Sales</Link> */}
               <Link to={'/faq'} className='text-gray-900 dark:text-gary-900'>FAQ</Link>
-              <Link to={'/seller/request'} className='text-gray-900 md:hidden block'>Become a seller</Link>
+              <Link to={'/seller/request'} className='text-gray-900 lg:hidden block'>Become a seller</Link>
             </Navbar.Collapse>
           </Navbar>
 

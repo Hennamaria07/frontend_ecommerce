@@ -4,7 +4,7 @@ import React from 'react'
 const AccordionComp = () => {
   return (
     <>
-     <section className='sm:px-32 py-10'>
+     <section className='pt-[150px] min-h-[100vh] sm:px-32 pb-10'>
      <Accordion>
       <Accordion.Panel>
         <Accordion.Title>What products do you sell?</Accordion.Title>

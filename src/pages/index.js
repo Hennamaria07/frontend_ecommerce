@@ -1,5 +1,5 @@
 import Hero from "./Hero";
 import Faq from "./Faq";
-import Dashboard from "./Dashboard";
+import Products from "./Products";
 
-export {Hero, Faq, Dashboard}
+export {Hero, Faq, Products}

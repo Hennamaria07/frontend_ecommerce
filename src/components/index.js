@@ -5,6 +5,9 @@ import Login from "./Login";
 import Error from "./Error";
 import SignUp from "./SignUp";
 import AccordionComp from "./AccordionFaq";
-import DashboardLayout from "./DashboardLayout";
+import BestDeals from "./BestDeals";
+import ProductLists from "./ProductLists";
+import Seller from "./Seller";
+import TodaysDeal from "./TodaysDeal";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, DashboardLayout}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal}
