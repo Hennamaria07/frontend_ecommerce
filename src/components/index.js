@@ -11,5 +11,10 @@ import Seller from "./Seller";
 import TodaysDeal from "./TodaysDeal";
 import Catagories from "./Catagories";
 import Services from "./Services";
+import AdminDashboard from "./AdminDashboard";
+// import Login from "./Login";
+// import SignUp from "./SignUp";
+// import Error from "./Error";
+// import Seller from "./Seller";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard,}

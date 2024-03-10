@@ -1,7 +1,6 @@
 import './App.css'
-import { Header, Footer, Login, Error, SignUp, Seller} from './components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import {Faq, Hero, Products } from './pages'
+import {Err, Faq, Hero, LoginLayout, Products, SellerPage, SignupLayout, Admin } from './pages'
 import ProductedRouter from './utils/ProductedRouter'
 import { useSelector } from 'react-redux'
 
@@ -11,17 +10,16 @@ console.log(isAuthenticated);
   return (
     <>
      <BrowserRouter>
-     <Header />
      <Routes>
       <Route path='/' element={<Hero />}/>
       <Route path='/faq' element={<Faq />}/>
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<SignUp />} />
+      <Route path='/login' element={<LoginLayout />} />
+      <Route path='/signup' element={<SignupLayout />} />
       <Route path='/products' element={<Products />} />
-      <Route path='/seller/request' element={<ProductedRouter isAuthenticated={isAuthenticated}> <Seller /></ProductedRouter>} />
-      <Route path='*' element={<Error />} />
+      <Route path='/seller/request' element={<ProductedRouter isAuthenticated={isAuthenticated}> <SellerPage /></ProductedRouter>} />
+      <Route path='/admin' element={<ProductedRouter isAuthenticated={isAuthenticated}> <Admin /></ProductedRouter>} />
+      <Route path='*' element={<Err />} />
      </Routes>
-     <Footer />
      </BrowserRouter>
     </>
   )

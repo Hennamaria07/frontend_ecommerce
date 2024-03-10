@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Error = () => {
   return (
     <>
-    <section className='customHeight'>
+    <section className='pt-[117.6px] custom404Height'>
     <Breadcrumb className='py-10 px-5' aria-label="Default breadcrumb example">
       <Breadcrumb.Item href="#" >
         Home

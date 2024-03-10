@@ -79,12 +79,7 @@ const Header = () => {
               <Dropdown.Item>Cloth</Dropdown.Item>
               <Dropdown.Item>Computer</Dropdown.Item>
               <Dropdown.Item>Moblie</Dropdown.Item>
-              {user && user.role === "admin" ? (
-                <>
-                  <Dropdown.Divider />
-                  <Link to={'/dashboard'} className='text-center ms-auto px-5 py-1.5 text-sm'>Dashboard</Link>
-                </>
-              ) : ""}
+              
             </Dropdown>
 
             <div className="flex md:order-2">
@@ -107,7 +102,11 @@ const Header = () => {
                   <span className="block text-sm">Bonnie Green</span>
                   <span className="block truncate text-sm font-medium">name@flowbite.com</span>
                 </Dropdown.Header>
-                <Dropdown.Item>Dashboard</Dropdown.Item>
+                {user && user.role === "admin" ? (
+                <>
+                  <Link to={'/admin'} className='text-center ms-auto px-5 py-1.5 text-sm'>Dashboard</Link>
+                </>
+              ) : ""}
                 <Dropdown.Item>Settings</Dropdown.Item>
                 <Dropdown.Item>Earnings</Dropdown.Item>
                 <Dropdown.Divider />

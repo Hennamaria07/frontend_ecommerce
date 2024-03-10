@@ -17,6 +17,9 @@ body {
   height: calc(100vh - 110px);
   overflow: hidden;
 }
+.custom404Height {
+  min-height: 80vh;
+}
 .customSignupHeight {
   min-height: calc(100vh - 110px);
 }
@@ -36,3 +39,12 @@ body {
 /* .minCustomHeight {
   min-height: ;
 } */
+
+/* icons */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

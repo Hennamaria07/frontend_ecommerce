@@ -1,9 +1,10 @@
 import React from 'react'
-import { BestDeals, Catagories, MainCarousel, Services, TodaysDeal } from '../components'
+import { BestDeals, Catagories, Footer, Header, MainCarousel, Services, TodaysDeal } from '../components'
 
 const Hero = () => {
   return (
     <>
+    <Header />
     <section className='dark:bg-[#121212ed]'>
     <MainCarousel />
     <TodaysDeal />
@@ -11,6 +12,7 @@ const Hero = () => {
     <BestDeals />
     <Services />
     </section>
+    <Footer />
     </>
   )
 }
