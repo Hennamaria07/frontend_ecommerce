@@ -12,7 +12,7 @@ const BestDeals = () => {
         </div>
         <h2 className='font-bold sm:text-4xl  dark:text-white text-2xl pb-5'>Best Deals</h2>
         <div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-12 xl:grid-rows-2 grid-rows-1'>
-          <article className="hidden xl:grid xl:col-span-5 xl:row-span-2 row-span-1 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <article className="hidden xl:grid xl:col-span-6 xl:row-span-2 row-span-1 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
               <img className="p-8 rounded-t-lg h-full" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product image" />
             </a>

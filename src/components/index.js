@@ -10,5 +10,6 @@ import ProductLists from "./ProductLists";
 import Seller from "./Seller";
 import TodaysDeal from "./TodaysDeal";
 import Catagories from "./Catagories";
+import Services from "./Services";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services}
