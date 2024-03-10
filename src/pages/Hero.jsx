@@ -1,5 +1,5 @@
 import React from 'react'
-import { BestDeals, MainCarousel, TodaysDeal } from '../components'
+import { BestDeals, Catagories, MainCarousel, TodaysDeal } from '../components'
 
 const Hero = () => {
   return (
@@ -8,6 +8,7 @@ const Hero = () => {
     <MainCarousel />
     {/* <BestDeals /> */}
     <TodaysDeal />
+    <Catagories />
     </section>
     </>
   )
