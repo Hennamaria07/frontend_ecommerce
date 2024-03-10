@@ -6,9 +6,9 @@ const Hero = () => {
     <>
     <section className='dark:bg-[#121212ed]'>
     <MainCarousel />
-    {/* <BestDeals /> */}
     <TodaysDeal />
     <Catagories />
+    <BestDeals />
     </section>
     </>
   )
