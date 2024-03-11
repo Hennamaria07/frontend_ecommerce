@@ -13,5 +13,6 @@ import Catagories from "./Catagories";
 import Services from "./Services";
 import AdminDashboard from "./AdminDashboard";
 import AdminProductList from "./AdminProductList";
+import AdminProductDetail from "./AdminProductDetail";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail}
