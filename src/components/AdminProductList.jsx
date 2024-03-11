@@ -42,7 +42,7 @@ const AdminProductList = () => {
              transition={Flip}
             />
                   <AdinNavbar />
-                    <div className="w-full absolute top-0 z-100  pt-[64px] lg:ps-[256px]">
+                    <div className="lg:w-[calc(100vw-256px)] absolute top-0 z-100 lg:left-[256px]  pt-[64px]">
                       <div className="p-5">
                       <div className="overflow-x-auto">
       <Table hoverable>
@@ -53,7 +53,9 @@ const AdminProductList = () => {
           <Table.HeadCell ></Table.HeadCell>
           <Table.HeadCell></Table.HeadCell>
           <Table.HeadCell>
+            <NavLink to={'/admin/product/edit'}>
             <span className="sr-only">Edit</span>
+            </NavLink>
           </Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">

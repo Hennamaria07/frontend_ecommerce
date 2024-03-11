@@ -32,7 +32,7 @@ const AdminProductDetail = () => {
             {/* <h1>{product?.name}</h1> */}
             <section className="w-full h-full">
                 <AdinNavbar />
-                <div className="w-full absolute top-0 z-100  min-h-[100vh] pt-[64px] lg:ps-[256px]">
+                <div className="lg:w-[calc(100vw-256px)] absolute top-0 z-100 lg:left-[256px]  pt-[64px]  min-h-[100vh]">
                     <ToastContainer
                         position="top-center"
                         autoClose={2000}
