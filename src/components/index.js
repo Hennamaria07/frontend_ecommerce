@@ -11,8 +11,9 @@ import Seller from "./Seller";
 import TodaysDeal from "./TodaysDeal";
 import Catagories from "./Catagories";
 import Services from "./Services";
-import AdminDashboard from "./AdminDashboard";
-import AdminProductList from "./AdminProductList";
-import AdminProductDetail from "./AdminProductDetail";
+import AdminDashboard from "./AdminComponenets/AdminDashboard";
+import AdminProductList from "./AdminComponenets/AdminProductList";
+import AdminProductDetail from "./AdminComponenets/AdminProductDetail";
+import AdminProductEdit from "./AdminComponenets/AdminProductEdit";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail, AdminProductEdit}

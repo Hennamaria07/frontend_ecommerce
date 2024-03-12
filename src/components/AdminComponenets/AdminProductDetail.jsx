@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { Flip, ToastContainer, toast } from 'react-toastify'
-import instance from '../utils/axios'
+import instance from '../../utils/axios'
 import AdinNavbar from './AdinNavbar'
 
 const reviews = { href: '#', average: 4, totalCount: 117 }

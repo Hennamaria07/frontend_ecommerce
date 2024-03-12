@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AdinNavbar from './AdinNavbar'
 import { Table } from 'flowbite-react';
-import instance from '../utils/axios'
+import instance from '../../utils/axios'
 import { Flip, ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { getProductLists } from '../redux/features/productSlice';
+import { getProductLists } from '../../redux/features/productSlice';
 import { NavLink } from 'react-router-dom';
+import AdminDeleteProduct from './AdminDeleteProduct';
 
 const AdminProductList = () => {
   const [products, setProducts] = useState(null);
@@ -53,18 +54,16 @@ const AdminProductList = () => {
           <Table.HeadCell ></Table.HeadCell>
           <Table.HeadCell></Table.HeadCell>
           <Table.HeadCell>
-            <NavLink to={'/admin/product/edit'}>
             <span className="sr-only">Edit</span>
-            </NavLink>
           </Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           {products && products.map((product) => (
             <Table.Row key={product._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+            <Table.Cell className="whitespace-nowrap capitalize font-medium text-gray-900 dark:text-white">
               {product.name}
             </Table.Cell>
-            <Table.Cell>{product.category}</Table.Cell>
+            <Table.Cell className='capitalize'>{product.category}</Table.Cell>
             <Table.Cell>{product.actualPrice}</Table.Cell>
             <Table.Cell>
               <NavLink to={`/admin/product/${product._id}`} className="font-medium text-blue-600 hover:underline dark:text-blue-500">
@@ -72,14 +71,14 @@ const AdminProductList = () => {
               </NavLink>
             </Table.Cell>
             <Table.Cell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+             <NavLink to={`/admin/product/edit/${product._id}`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                 Edit
-              </a>
+             </NavLink>
             </Table.Cell>
             <Table.Cell>
-              <a href="#" className="font-medium text-red-600 hover:underline dark:text-red-500">
-                Delete
-              </a>
+              <NavLink className="font-medium text-red-600 hover:underline dark:text-red-500">
+                <AdminDeleteProduct id={product._id}/>
+              </NavLink>
             </Table.Cell>
           </Table.Row>
           ))}

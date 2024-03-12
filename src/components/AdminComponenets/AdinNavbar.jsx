@@ -34,7 +34,7 @@ const AdinNavbar = () => {
        <li className="pl-6 cursor-pointer text-black text-sm leading-3 tracking-normal pb-4 pt-5  dark:text-white">
             <div className="flex items-center">
                 <div>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         dashboard
                     </span>
                 </div>
@@ -45,17 +45,27 @@ const AdinNavbar = () => {
        <Link to={'/admin/products'}>
        <li className="pl-6 cursor-pointer text-black dark:text-white text-sm leading-3 tracking-normal mt-4 mb-4 py-2">
             <div className="flex items-center">
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     shopping_bag
                 </span>
                 <span className="ml-2">Products</span>
             </div>
         </li>
         </Link>
+       <Link to={'/admin/add-products'}>
+       <li className="pl-6 cursor-pointer text-black dark:text-white text-sm leading-3 tracking-normal mt-4 mb-4 py-2">
+            <div className="flex items-center">
+                <span className="material-symbols-outlined">
+                    add
+                </span>
+                <span className="ml-2">Add Product</span>
+            </div>
+        </li>
+        </Link>
        <Link to={'/admin/users'}>
        <li className="pl-6 cursor-pointer  text-black  dark:text-white text-sm leading-3 tracking-normal mb-4 py-2">
             <div className="flex items-center">
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     group
                 </span>
                 <span className="ml-2">Users</span>
@@ -75,7 +85,7 @@ const AdinNavbar = () => {
                         <h1 className="text-xl  text-black  dark:text-white">Admin Panel</h1>
                     </div>
                     <div id="closeSideBar" className="flex text-black  dark:text-white items-center justify-center h-10 w-10" onClick={() => setShow(!show)}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             close
                         </span>
                     </div>
@@ -85,7 +95,7 @@ const AdinNavbar = () => {
                    <li className="pl-6 cursor-pointer text-black text-sm leading-3 tracking-normal pb-4 pt-5 ">
                         <div className="flex items-center">
                             <div className="w-6 text-black  dark:text-white h-6 md:w-8 md:h-8">
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     dashboard
                                 </span>
                             </div>
@@ -97,8 +107,20 @@ const AdinNavbar = () => {
                     <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 ">
                         <div className="flex items-center">
                             <div className="w-6 text-black  dark:text-white h-6 md:w-8 md:h-8">
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     shopping_bag
+                                </span>
+                            </div>
+                            <span className="ml-2 xl:text-base md:text-2xl text-black  dark:text-white text-base">Products</span>
+                        </div>
+                    </li>
+                    </Link>
+                    <Link className='/admin/add-product'>
+                    <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 ">
+                        <div className="flex items-center">
+                            <div className="w-6 text-black  dark:text-white h-6 md:w-8 md:h-8">
+                                <span className="material-symbols-outlined">
+                                    add
                                 </span>
                             </div>
                             <span className="ml-2 xl:text-base md:text-2xl text-black  dark:text-white text-base">Products</span>
@@ -109,7 +131,7 @@ const AdinNavbar = () => {
                     <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mb-4 py-2 ">
                         <div className="flex items-center">
                             <div className="w-6 text-black  dark:text-white h-6 md:w-8 md:h-8">
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     group
                                 </span>
                             </div>
@@ -123,7 +145,7 @@ const AdinNavbar = () => {
                 <div className="flex justify-center mb-4 w-full px-6">
                     <div className="relative w-full">
                         <div className=" text-black  dark:text-white absolute ml-4 inset-0 m-auto w-4 h-4">
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 search
                             </span>
                         </div>
@@ -164,7 +186,7 @@ const AdinNavbar = () => {
             <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
                 <div className="relative w-full">
                     <div className=" text-black  dark:text-white absolute ml-4 inset-0 m-auto w-4 h-4">
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             search
                         </span>
                     </div>
@@ -194,7 +216,7 @@ const AdinNavbar = () => {
                                 <ul className="p-2 w-full border-r text-black  dark:text-white dark:bg-gray-800  bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 ">
                                     <li className="flex w-full justify-between cursor-pointer items-center">
                                         <div className="flex items-center">
-                                            <span class="material-symbols-outlined">
+                                            <span className="material-symbols-outlined">
                                                 expand_more
                                             </span>
                                             <span className="text-sm ml-2">My Profile</span>
@@ -202,7 +224,7 @@ const AdinNavbar = () => {
                                     </li>
                                     <li className="flex w-full justify-between  text-black  dark:text-white cursor-pointer items-center mt-2">
                                         <div className="flex items-center">
-                                            <span class="material-symbols-outlined">
+                                            <span className="material-symbols-outlined">
                                                 logout
                                             </span>
                                             <span className="text-sm ml-2">Sign out</span>
@@ -219,7 +241,7 @@ const AdinNavbar = () => {
                         </div>
                         <p className=" text-black  dark:text-white text-sm mx-3">Jane Doe</p>
                         <div className="cursor-pointer  text-black  dark:text-white">
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 expand_more
                             </span>
                         </div>
