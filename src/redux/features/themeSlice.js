@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    theme: 'light'
+    theme: 'light',
+    show: false
 }
 
 const themeSlice = createSlice({
@@ -9,8 +10,11 @@ const themeSlice = createSlice({
     reducers: {
       getTheme: (state, action) => {
         state.theme = action.payload.theme;
+      },
+      Getvisibility: (state, action) => {
+        state.show = action.payload.show;
       }
     }
   });
-export const {getTheme} = themeSlice.actions;
+export const {getTheme, Getvisibility} = themeSlice.actions;
 export default themeSlice.reducer;

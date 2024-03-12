@@ -15,5 +15,6 @@ import AdminDashboard from "./AdminComponenets/AdminDashboard";
 import AdminProductList from "./AdminComponenets/AdminProductList";
 import AdminProductDetail from "./AdminComponenets/AdminProductDetail";
 import AdminProductEdit from "./AdminComponenets/AdminProductEdit";
+import AdminProductAdd from "./AdminComponenets/AdminProductAdd";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail, AdminProductEdit}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail, AdminProductEdit, AdminProductAdd}

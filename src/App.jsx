@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import {Err, Faq, Hero, LoginLayout, Products, SellerPage, SignupLayout, Admin } from './pages'
 import ProductedRouter from './utils/ProductedRouter'
 import { useSelector } from 'react-redux'
-import { AdminProductDetail, AdminProductEdit, AdminProductList } from './components'
+import { AdminProductAdd, AdminProductDetail, AdminProductEdit, AdminProductList } from './components'
 import AdminProductedRouter from './utils/AdminProductedRouter'
 
 function App() {
 const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-const role = useSelector(state => state.auth.user.role)
+const role = useSelector(state => state.auth.user?.role)
 // console.log(role);
 console.log(isAuthenticated);
   return (
@@ -25,6 +25,7 @@ console.log(isAuthenticated);
       <Route path='/admin/products' element={<AdminProductedRouter isAuthenticated={isAuthenticated} role={role}> <AdminProductList /></AdminProductedRouter>} />
       <Route path='/admin/product/:id' element={<AdminProductedRouter isAuthenticated={isAuthenticated} role={role}> <AdminProductDetail /></AdminProductedRouter>} />
       <Route path='/admin/product/edit/:id' element={<AdminProductedRouter isAuthenticated={isAuthenticated} role={role}> <AdminProductEdit /></AdminProductedRouter>} />
+      <Route path='/admin/add-product' element={<AdminProductedRouter isAuthenticated={isAuthenticated} role={role}> <AdminProductAdd /></AdminProductedRouter>} />
       <Route path='*' element={<Err />} />
      </Routes>
      </BrowserRouter>
