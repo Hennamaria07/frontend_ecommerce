@@ -3,7 +3,6 @@ import AdinNavbar from './AdinNavbar'
 import { useSelector } from 'react-redux';
 import instance from '../../utils/axios';
 import { Flip, ToastContainer, toast } from 'react-toastify';
-import { Table } from 'flowbite-react';
 import { NavLink } from 'react-router-dom';
 import BannerDelete from './BannerDelete';
 

@@ -18,5 +18,6 @@ import AdminProductEdit from "./AdminComponenets/AdminProductEdit";
 import AdminProductAdd from "./AdminComponenets/AdminProductAdd";
 import Banner from "./AdminComponenets/Banner";
 import BannerView from "./AdminComponenets/BannerView";
+import AddCategories from "./AdminComponenets/AddCategories";
 
-export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail, AdminProductEdit, AdminProductAdd, Banner, BannerView}
+export {Header, MainCarousel, Footer, Login, Error, SignUp, AccordionComp, BestDeals, ProductLists, Seller, TodaysDeal, Catagories, Services, AdminDashboard, AdminProductList, AdminProductDetail, AdminProductEdit, AdminProductAdd, Banner, BannerView, AddCategories}

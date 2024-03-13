@@ -49,7 +49,7 @@ const AdminProductList = () => {
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell>Product name</Table.HeadCell>
-          <Table.HeadCell>Category</Table.HeadCell>
+          <Table.HeadCell>Brand</Table.HeadCell>
           <Table.HeadCell>Price</Table.HeadCell>
           <Table.HeadCell ></Table.HeadCell>
           <Table.HeadCell></Table.HeadCell>
@@ -63,7 +63,7 @@ const AdminProductList = () => {
             <Table.Cell className="whitespace-nowrap capitalize font-medium text-gray-900 dark:text-white">
               {product.name}
             </Table.Cell>
-            <Table.Cell className='capitalize'>{product.category}</Table.Cell>
+            <Table.Cell className='capitalize'>{product.brand}</Table.Cell>
             <Table.Cell>{product.actualPrice}</Table.Cell>
             <Table.Cell>
               <NavLink to={`/admin/product/${product._id}`} className="font-medium text-blue-600 hover:underline dark:text-blue-500">

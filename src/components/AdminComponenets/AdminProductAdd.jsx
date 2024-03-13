@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 const AdminProductAdd = () => {
   const show = useSelector(state => state.mode.show);
   const [formValues, setFormValues] = useState({});
+  const [categoryLists, setCategoryLists] = useState('');
   const [checkboxValue, setCheckboxValues] = useState({});
   const [errors, setErrors] = useState({});
   const [files, setFiles] = useState([]);
@@ -15,8 +16,10 @@ const AdminProductAdd = () => {
 
   const handleFileChange = (e) => {
     const fileList = Array.from(e.target.files);
+    // console.log('fileList-->', fileList);
     const imageFiles = fileList.filter(file => file.type.match('image.*'));
-  
+    // console.log('image array', imageFiles);
+
     if (imageFiles.length !== fileList.length) {
       setErrors(prev => ({ ...prev, image: 'Only image files are allowed. Please select again.' }));
       setFiles([]);
@@ -29,6 +32,10 @@ const AdminProductAdd = () => {
     }
   };
 
+  // const handleFileChange = async(e) => {
+  //   const files = e.traget.files[5];
+  //   console.log('files---->', e.target.files[5]);
+  // }
 
   const validation = (values) => {
     const errors = {};
@@ -48,7 +55,7 @@ const AdminProductAdd = () => {
     if (!values.productPrice || !priceRe.test(values.productPrice)) {
       errors.productPrice = "Invalid price format";
     }
-    if (!values.productCategory || !categoryRe.test(values.productCategory)) {
+    if (!values.productCategory) {
       errors.productCategory = "Invalid category format";
     }
     if (!values.productBrand || !brandRe.test(values.productBrand)) {
@@ -60,7 +67,7 @@ const AdminProductAdd = () => {
     if (Object.keys(checkboxValue).length === 0) {
       errors.size = "please select atleast one field"
     }
-    if(files.length === 0 ) {
+    if (files.length === 0) {
       // console.log(files.length);
       errors.image = 'upload atleast 5 images'
     }
@@ -81,11 +88,28 @@ const AdminProductAdd = () => {
       [name]: newValue
     }));
   }
+  
 
   useEffect(() => {
     console.log(formValues);
-  }, [formValues]);
-  
+console.log(files);
+  }, [formValues, files]);
+  useEffect(() => {
+    const getCategorys = async () => {
+        try {
+            const res = await instance.get('/api/v1/category/all-categories', { withCredentials: true });
+            // console.log(res.data);
+            if (res.data.success) {
+                setCategoryLists(res.data.category);
+                toast.success(res.data.message);
+            }
+        } catch (error) {
+            toast.error(error.response.data.message)
+        }
+    }
+    getCategorys();
+}, [categoryLists]);
+// console.log(categoryLists);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,33 +117,35 @@ const AdminProductAdd = () => {
     console.log(validation(formValues))
     const validationErrors = validation(formValues);
     setErrors(validationErrors);
-    
+
     console.log(`form value${formValues.productPrice}`);
-    if (Object.keys(validationErrors).length === 0) { 
+    if (Object.keys(validationErrors).length === 0) {
       const formData = new FormData();
       formData.append('name', formValues.productName);
-      formData.append( 'description', formValues.productDescription);
+      formData.append('description', formValues.productDescription);
       formData.append('brand', formValues.productBrand);
       formData.append('stock', formValues.productStock);
       formData.append('category', formValues.productCategory);
       formData.append('actualPrice', formValues.productPrice);
       formData.append('discountPrice', formValues?.productDiscountPrice || 0);
       formData.append('size', checkboxValue);
-      formData.append('product', files);
-        try {
-          const res = await instance.post('/api/v1/product/add', formData, {withCredentials: true, headers: {
+      files.map((file) => formData.append('product', file));
+      try {
+        const res = await instance.post('/api/v1/product/add', formData, {
+          withCredentials: true, headers: {
             "Content-Type": "multipart/form-data"
-          }});
-            if (res.data.success) {
-                toast.success(res.data.message);
-                await new Promise((resolve) => setTimeout(resolve, 1000))
-                setTimeout(() => {
-                    navigate('/admin/products');
-                }, 1000);
-            }
-        } catch (error) {
-            toast.error(error.response.data.message)
+          }
+        });
+        if (res.data.success) {
+          toast.success(res.data.message);
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+          setTimeout(() => {
+            navigate('/admin/products');
+          }, 1000);
         }
+      } catch (error) {
+        toast.error(error.response.data.message)
+      }
     }
   }
   return (
@@ -129,7 +155,7 @@ const AdminProductAdd = () => {
         <div className={`${show ? 'w-[calc(100vw-256px)] relative top-0 z-8 pt-[64px] left-[256px] bg-white dark:bg-[#121212ed] lg:bg-transparent lg:dark:bg-transparent' : 'lg:w-[calc(100vw-256px)] w-full absolute top-0 z-100 lg:left-[256px] pt-[64px] bg-white dark:bg-[#121212ed] lg:bg-transparent lg:dark:bg-transparent'}`}>
           <div className="p-5">
             <form action="#" className='grid gap-5' onSubmit={handleSubmit} >
-            <ToastContainer 
+              <ToastContainer
                 position="top-center"
                 autoClose={2000}
                 hideProgressBar={false}
@@ -141,7 +167,7 @@ const AdminProductAdd = () => {
                 pauseOnHover
                 theme="dark"
                 transition={Flip}
-                />
+              />
               <div className="relative">
                 <input type="text" id="productName" name='productName' onChange={handleInput} className="block px-2.5 pb-2.5 pt-4 w-full   text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-600 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" " />
                 <label htmlFor="productName" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-2 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-gray-800 peer-focus:dark:text-gray-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Product Name</label>
@@ -159,8 +185,14 @@ const AdminProductAdd = () => {
                   {errors.productBrand && <p className='text-red-600'>{errors?.productBrand}</p>}
                 </div>
                 <div className="relative">
-                  <input type="text" id="productCategory" onChange={handleInput} name='productCategory' className="block px-2.5 pb-2.5 pt-4 w-full   text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-600 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" " />
-                  <label htmlFor="productCategory" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-2 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-gray-800 peer-focus:dark:text-gray-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Product Category</label>
+                  <label htmlFor="productCategory" className="sr-only">Underline select</label>
+                  <select id="productCategory" onChange={handleInput} name='productCategory' className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Choose a category</option>
+                   {categoryLists && categoryLists.map((category) => (
+                    <option value={category.name} key={category._id}>{category.name}</option>
+                   ))}
+                    
+                  </select>
                   {errors.productCategory && <p className='text-red-600'>{errors?.productCategory}</p>}
                 </div>
                 <div>
@@ -226,7 +258,7 @@ const AdminProductAdd = () => {
                     <div className="mt-4 flex text-sm leading-6 text-gray-600 dark:text-gray-400">
                       <label htmlFor="file-upload" className="relative cursor-pointer rounded-md bg-white font-semibold dark:bg-transparent dark:text-orange-300">
                         <span>Upload a file</span>
-                        <input id="file-upload" required name="file-upload" onChange={handleFileChange} type="file" multiple className="sr-only" />
+                        <input id="file-upload" required name="file-upload" onChange={(handleFileChange)} type="file" multiple className="sr-only" />
                       </label>
                       <p className="pl-1">or drag and drop</p>
                     </div>
