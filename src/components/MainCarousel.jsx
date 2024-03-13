@@ -5,24 +5,24 @@ import { Flip, ToastContainer, toast } from 'react-toastify';
 
 
 const MainCarousel = () => {
-  const [products, setProducts] = useState('');
+  const [banners, setBanners] = useState('');
   useEffect(() => {
-    const getAllProducts = async () => {
+    const getAllBanners = async () => {
       try {
-        const res = await instance.get('/api/v1/product/all');
+        const res = await instance.get('/api/v1/banner/all');
         if(res.data.success) {
-          setProducts(res.data.product);
+          setBanners(res.data.banner);
           // console.log(res.data);
         }
       } catch (error) {
         toast.error(error.response.data.message)
       }
     }
-    getAllProducts()
+    getAllBanners()
   }, []);
-  console.log(`products---> ${products}`);
+  console.log(`products---> ${banners}`);
   // console.log(products.images[0].url)
-  {products && products.map((product) => console.log(product.images[0].url))}
+  {banners && banners.map((banner) => console.log(banner.image.url))}
     return (
         <>
         <ToastContainer 
@@ -39,17 +39,10 @@ const MainCarousel = () => {
              transition={Flip}
             />
            <div className="pt-[117.6px] h-[100vh] overflow-hidden">
-      <Carousel leftControl=" " className='rounded-none' rightControl=" ">
-      {products === '' ? (<h1>Loading....</h1>) : products.map((product, index) => (
-  <div key={index} className='carousel-bg w-full h-full p-5' style={{ 
-    backgroundImage: `url(${product.images[0]?.url || "https://flowbite.com/docs/images/carousel/carousel-2.svg"})` 
-  }}>
-    <div className='md:w-[50%] text-center text-neutral-950 h-full flex items-center'>
-      <div className="product-details">
-        <p className='text-xl'>{product.name}</p>
-        <h1 className='text-2xl'>{product.description}</h1>
-      </div>
-    </div>
+           <Carousel leftControl=" " className='rounded-none' rightControl=" ">
+      {banners === '' ? (<h1>Loading....</h1>) : banners.map((banner, index) => (
+  <div key={index} className=' w-full h-full'>
+    <img src={banner.image.url} alt="..." />
   </div>
 ))}
         {/* <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
