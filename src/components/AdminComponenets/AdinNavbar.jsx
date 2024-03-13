@@ -66,6 +66,16 @@ const AdinNavbar = () => {
                             </div>
                         </li>
                     </Link>
+                    <Link to={'/admin/banner'}>
+                        <li className="pl-6 cursor-pointer text-black dark:text-white text-sm leading-3 tracking-normal mt-4 mb-4 py-2">
+                            <div className="flex items-center">
+                                <span className="material-symbols-outlined">
+                                    add
+                                </span>
+                                <span className="ml-2">Banner</span>
+                            </div>
+                        </li>
+                    </Link>
                     <Link to={'/admin/users'}>
                         <li className="pl-6 cursor-pointer  text-black  dark:text-white text-sm leading-3 tracking-normal mb-4 py-2">
                             <div className="flex items-center">
@@ -127,6 +137,16 @@ const AdinNavbar = () => {
                                         </div>
                                     </li>
                                 </Link>
+                                <Link to={'/admin/banner'}>
+                        <li className="pl-6 cursor-pointer text-black dark:text-white text-sm leading-3 tracking-normal mt-4 mb-4 py-2">
+                            <div className="flex items-center">
+                                <span className="material-symbols-outlined">
+                                    add
+                                </span>
+                                <span className="ml-2">Banner</span>
+                            </div>
+                        </li>
+                    </Link>
                                 <Link to={'/admin/users'}>
                                     <li className="pl-6 cursor-pointer  text-black  dark:text-white text-sm leading-3 tracking-normal mb-4 py-2">
                                         <div className="flex items-center">
